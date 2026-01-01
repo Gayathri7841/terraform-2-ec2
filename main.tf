@@ -1,6 +1,3 @@
-terraform {
- 
-
 provider "aws" {
   region = "ap-south-1"
 }
@@ -15,3 +12,6 @@ resource "aws_instance" "ec2" {
   }
 }
 
+output "public_ips" {
+  value = aws_instance.ec2[*].public_ip
+}
